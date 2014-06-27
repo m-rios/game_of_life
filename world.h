@@ -12,7 +12,7 @@ private:
     void next(cell* current);
 
 public:
-    world();
+    world(int x, int y);
     ~world();
     void print();
     void generate();

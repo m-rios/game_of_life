@@ -10,6 +10,7 @@ struct cell
     cell* lower_left;
     cell* left;
     cell* parent;
+    int index;
     bool alive;
     bool next;
     bool modified;

@@ -1,5 +1,13 @@
 #include "world.h"
 
+world::world(int x, int y)
+{
+    for (int i = 0; i < x; ++i)
+    {
+        /* code */
+    }
+}
+
 bool world::last(cell* cell)
 {
     return cell->right == NULL && cell->lower == NULL;
@@ -34,19 +42,31 @@ void world::generate()
     {
         //count neighbours
         neighbours = 0;
+        if (current->upper_left)
+            if (current->upper_left->alive)
+                neighbours++;
         if (current->upper)
             if (current->upper->alive)
+                neighbours++;
+        if (current->upper_right)
+            if (current->upper_right->alive)
                 neighbours++;
         if (current->right)
             if (current->right->alive)
                 neighbours++;
+        if (current->lower_right)
+            if (current->lower_right->alive)
+                neighbours++;
         if (current->lower)
             if (current->lower->alive)
+                neighbours++;
+        if (current->lower_left)
+            if (current->lower_left->alive)
                 neighbours++;
         if (current->left)
             if (current->left->alive)
                 neighbours++;
-        
+
         //apply gol rules
         if (neighbours < 2) //underpopulation
             current->next = false;
