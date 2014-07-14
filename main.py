@@ -2,18 +2,32 @@ from world import *
 from time import sleep
 import sys
 
-if len(sys.argv) > 1:
-    size = int(sys.argv[1])
-else:
-    size = 15
-print 'size: %d' %size
+pattern = "none"
+size = 40
+frequence = 0.25 
+interactive = False
 
-world = World(size)
+if len(sys.argv) > 1:
+    for i in xrange(len(sys.argv)):
+        if sys.argv[i] == "-p":
+            pattern = sys.argv[i+1]
+        if sys.argv[i] == "-s":
+            size = sys.argv[i+1]
+        if sys.argv[i] == "-f":
+            frequence = float(sys.argv[i+1])
+        if sys.argv[i] == "-i":
+            interactive = True
+
+
+world = World(size,pattern)
 world.draw()
-sleep(1)
+raw_input()
 
 while 1:
     world.calc()
     world.update()
     world.draw()
-    sleep(0.2)
+    if interactive:
+        raw_input()
+    else:
+        sleep(frequence)
