@@ -22,6 +22,15 @@ class World():
                     self.array[x].append(Cell(False))
             if pattern == "ggg":
                 self.gosper_glider_gun()
+            elif pattern == "glider":
+                self.glider()
+
+    def glider(self):
+        pos = self.array
+        pos[10][10].alive = True
+        pos[10][11].alive = True
+        pos[11][11].alive = True
+        pos[11][12].alive = True
 
     def gosper_glider_gun(self):
         pos = self.array
@@ -66,7 +75,7 @@ class World():
         pos[3][36].alive = True
         pos[4][36].alive = True
 
-    def draw(self):
+    def draw(self):        
         system('clear')
         for x in xrange(self.size):
             for y in xrange(self.size):
@@ -74,8 +83,8 @@ class World():
             print
 
     def calc(self):
-        for x in xrange(self.size):
-            for y in xrange(self.size):
+        for y in xrange(self.size):
+            for x in xrange(self.size):
                 current = self.array[x][y]
                 if x > 0:
                     if y > 0:
@@ -106,6 +115,8 @@ class World():
                     current.future = False
                 if current.neighbors < 2:
                     current.future = False
+                if current.neighbors == 2:
+                    current.future = current.alive
                 if current.neighbors == 3:
                     current.future = True
 
