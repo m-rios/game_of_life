@@ -4,7 +4,7 @@ import sys
 
 pattern = "none"
 size = 40
-frequence = 0.25 
+frequence = 0.12 
 interactive = False
 
 if len(sys.argv) > 1:
