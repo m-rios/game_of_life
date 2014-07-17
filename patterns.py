@@ -1,9 +1,16 @@
 def glider(pos):
-        pos[0][2].alive = True
-        pos[1][0].alive = True
-        pos[1][2].alive = True
-        pos[2][1].alive = True
-        pos[2][2].alive = True
+    pos[0][2].alive = True
+    pos[1][0].alive = True
+    pos[1][2].alive = True
+    pos[2][1].alive = True
+    pos[2][2].alive = True
+
+def test(pos):
+    pos[0][36].alive = True
+    pos[1][36].alive = True
+    pos[1][37].alive = True
+    pos[2][36].alive = True
+    pos[2][38].alive = True    
 
 def gosper_glider_gun(pos):
     pos[5][1].alive = True

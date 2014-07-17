@@ -25,6 +25,8 @@ class World():
                 gosper_glider_gun(self.array)
             elif pattern == "glider":
                 glider(self.array)
+            elif pattern == "test":
+                test(self.array)
 
     def draw(self):        
         system('clear')
